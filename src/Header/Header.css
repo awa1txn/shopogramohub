@@ -1,0 +1,36 @@
+.header{
+    background-color: #24DB7C;
+    padding: 20px 10px;
+}
+.nav{
+    margin: 0 auto;
+}
+.nav-bar{
+    display: flex;
+    justify-content: left;
+    list-style-type: none;
+    margin: 0;
+    padding:0
+}
+.nav-bar a>li{
+    text-transform: uppercase;
+    color:white;
+    font-size: x-large;
+}
+.nav-bar a{
+    float: center;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px; 
+    line-height: 25px;
+    border-radius: 4px;
+}
+@media screen and (max-width: 500px) {
+    .nav-bar {
+    float: none;
+    display: block;
+    text-align: left;
+    }
+}
