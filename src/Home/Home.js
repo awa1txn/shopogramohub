@@ -1,15 +1,14 @@
 import './Home.scss';
-
-//window.location.replace('https://codefrontend.com');
+import {Link} from 'react-router-dom'
 
 function Home() {
   return (
     <>
     <div className='content'>
-        <button className='button' onClick={() => window.location.replace('http://localhost:3000/host')}>host room</button>
+    <Link to='/host'><button className='button'>host room</button></Link>
     </div>
     <div className='content'>
-        <button className='button' onClick={() => window.location.replace('http://localhost:3000/join')}>join room</button>
+    <Link to='/join'><button className='button'>join room</button></Link>
     </div>
     </>
   );

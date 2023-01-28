@@ -1,13 +1,14 @@
 import './Header.scss';
+import {Link} from 'react-router-dom'
 
 function Header() {
   return (
     <div className='header'>
       <div className='nav'>
         <ul className='nav-bar'>
-          <a href='/'><li>home</li></a>
-          <a href='/contact'><li>contact</li></a>
-          <a href='/about'><li>about</li></a>
+          <Link to='/'><li>home</li></Link>
+          <Link to='/contact'><li>contact</li></Link>
+          <Link to='/about'><li>about</li></Link>
         </ul>
       </div>
     </div>
