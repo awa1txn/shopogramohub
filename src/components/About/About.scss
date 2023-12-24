@@ -86,3 +86,11 @@ body{
     transform: scaleX(1);
     transition: all .1s ease
   }
+  .aboutContent{
+    width: 400px;
+    margin: 10px auto;
+  }
+  .emphasizedLetter{
+    position: static;
+    left:10px
+  }

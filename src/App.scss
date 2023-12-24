@@ -1,0 +1,11 @@
+*{
+    scrollbar-width: 0;
+}
+
+*::-webkit-scrollbar {
+    width: 0;
+  }
+.centerText{
+    display: flex;
+    justify-content: center;
+}

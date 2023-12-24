@@ -16,7 +16,7 @@ export default function Join() {
         <span className="focus-border"></span>
     </div>
     <div className='content'>
-        <input className="effect-1" type="text" placeholder="Room name"
+        <input className="effect-1" type="text" placeholder="Room session id"
         onChange={(e)=>{setRoomID(e.target.value)}}/>
         <span className="focus-border"></span>
     </div>

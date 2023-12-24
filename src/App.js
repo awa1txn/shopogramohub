@@ -7,6 +7,8 @@ import Host from './components/Host/Host';
 import Join from './components/Join/Join';
 import Room from './components/Room/Room';
 
+import { useLocation } from 'react-router-dom';
+
 // import { createContext } from 'react';
 import {useState} from 'react';
 
@@ -41,12 +43,16 @@ export default function App() {
 }
 
 const Root = () => {
+  const location = useLocation();
   return (
     <>
       <div>
         <Header />
       </div>
       <div>
+        <div className='centerText'>
+          Current URL: {location.pathname.slice(1)}
+        </div>
         <Outlet />
       </div>
     </>
