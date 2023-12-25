@@ -10,7 +10,7 @@ import Room from './components/Room/Room';
 import { useLocation } from 'react-router-dom';
 
 // import { createContext } from 'react';
-import {useState} from 'react';
+// import {useState} from 'react';
 
 import {createBrowserRouter, createRoutesFromElements, Outlet, Route, RouterProvider} from 'react-router-dom'
 
@@ -18,7 +18,7 @@ import {createBrowserRouter, createRoutesFromElements, Outlet, Route, RouterProv
 // export const AuthContext = createContext(null);
 
 export default function App() {
-  const [currentUser, setCurrentUser] = useState({ name: '' });
+  // const [currentUser, setCurrentUser] = useState({ name: '' });
 
   const routes = createBrowserRouter(
     createRoutesFromElements(
@@ -51,7 +51,7 @@ const Root = () => {
       </div>
       <div>
         <div className='centerText'>
-          Current URL: {location.pathname.slice(1)}
+          Current page: {location.pathname.slice(1) === '' ? "main page" : location.pathname.slice(1)}
         </div>
         <Outlet />
       </div>

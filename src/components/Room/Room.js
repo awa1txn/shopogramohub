@@ -1,6 +1,6 @@
 import './Room.scss';
 import { useLocation } from 'react-router-dom';
-import { useState, useEffect, useCallback } from 'react';
+import { useState } from 'react';
 import useWebSocket from 'react-use-websocket';
 // import { AuthContext } from '../../App';
 
@@ -9,24 +9,28 @@ const WS_URL = 'ws://localhost:8000';
 
 export default function Room() {
 
-  const { sendJsonMessage, lastMessage } = useWebSocket(WS_URL, {
+  const { sendJsonMessage  } = useWebSocket(WS_URL, {
     share: true,
     filter: () => false,
     onOpen: () => {
       console.log('WebSocket connection established.');
     },
-    onMessage: (event) => {
-      console.log(event)
+    onMessage: (event) =>{
+      console.log(JSON.parse(event.data).roomID === location.pathname.slice(1))
+      if(JSON.parse(event.data).roomID === location.pathname.slice(1)) {
+        setShoppingCart((prev) => prev.concat(JSON.parse(event.data).shopCartItemAdded))
+      } else{
+        console.log('wrong room')
+      }
     }
   });
 
-  function handleHtmlChange() {
-    sendJsonMessage({
-      type: 'contentchange',
-      content: "123"
-    });
-  }
- 
+  // useEffect(() => {
+  //   if (lastMessage !== null) {
+  //     setShoppingCart((prev) => prev.concat(JSON.parse(lastMessage.data).shopCartItemAdded));
+  //   }
+  // }, [lastMessage]);
+
   // const {currentUser} = useContext(AuthContext)
   const location = useLocation();
   // const navigate = useNavigate();
@@ -45,7 +49,11 @@ export default function Room() {
   const itemSubmit = () => {
     if (item.length >= 3) {
       setlengthValidation(false);
-      setShoppingCart([...shoppingCart, item]);
+      // console.log(item)
+      sendJsonMessage({
+        roomID: location.pathname.slice(1),
+        shopCartItemAdded: item
+      });
       setItem(''); // Clear the input after submitting
     } else {
       setlengthValidation(true);
@@ -66,13 +74,12 @@ export default function Room() {
           onChange={(e) => setItem(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
-              itemSubmit();
-              handleHtmlChange()
+              itemSubmit()
             }
           }}
           value={item}
         ></input>
-        {!lengthValidation ? '' : 'less than 3 chars'}
+        {!lengthValidation ? '' : 'Less than 3 chars'}
         <button onClick={itemSubmit} className='button'>
           add to shoplist
         </button>
@@ -80,8 +87,8 @@ export default function Room() {
       <div className='content'>
         {Array.isArray(shoppingCart) &&
           shoppingCart.map((el, index) => {
-            return <div className='item'>
-              <p key={index}>{el}</p>
+            return <div className='item' key={index}>
+              <p>{el}</p>
               <p
               className='unselectable'
               onClick={()=>{

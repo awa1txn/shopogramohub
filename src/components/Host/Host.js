@@ -2,7 +2,6 @@ import './Host.scss';
 import { createRoom } from '../../middleware/host';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-import { useContext } from 'react';
 // import { AuthContext } from '../../App';
 
 export default function Host() {
