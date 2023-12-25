@@ -4,7 +4,7 @@ import { useState } from 'react';
 import useWebSocket from 'react-use-websocket';
 // import { AuthContext } from '../../App';
 
-const WS_URL = 'ws://localhost:8000';
+const WS_URL = 'ws://eagle-deciding-lamprey.ngrok-free.app';
 
 
 export default function Room() {
